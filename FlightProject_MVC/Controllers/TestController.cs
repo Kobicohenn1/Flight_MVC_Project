@@ -18,15 +18,15 @@ namespace FlightProject_MVC.Controllers
         [HttpGet("Add")]
         public string Add()
         {
-            _flightBookingDbContext.Customers.Add(new Customer()
-            {
-                Bookings = new List<Booking>(),
-                FirstName = "Kobi",
-                LastName = "Mashoo",
-                Password = "12345",
-                Username = "KobiHagever",
-            });
-            _flightBookingDbContext.SaveChanges();
+            //_flightBookingDbContext.Customers.Add(new Customer()
+            //{
+            //    Bookings = new List<Booking>(),
+            //    FirstName = "Kobi",
+            //    LastName = "Mashoo",
+            //    Password = "12345",
+            //    Username = "KobiHagever",
+            //});
+            //_flightBookingDbContext.SaveChanges();
             return "hello";
         }
 

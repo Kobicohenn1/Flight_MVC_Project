@@ -8,17 +8,17 @@
 
   <ItemGroup>
     <Compile Remove="Views\Booking\**" />
-    <Compile Remove="Views\Customer\**" />
     <Compile Remove="Views\Flight\**" />
     <Content Remove="Views\Booking\**" />
-    <Content Remove="Views\Customer\**" />
     <Content Remove="Views\Flight\**" />
     <EmbeddedResource Remove="Views\Booking\**" />
-    <EmbeddedResource Remove="Views\Customer\**" />
     <EmbeddedResource Remove="Views\Flight\**" />
     <None Remove="Views\Booking\**" />
-    <None Remove="Views\Customer\**" />
     <None Remove="Views\Flight\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\Login.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +39,10 @@
   <ItemGroup>
     <Folder Include="Views\Flight\" />
     <Folder Include="Views\Booking\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Customers\Login.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FlightProject_MVC.Data;
 using FlightProject_MVC.Models;
 
-namespace FlightProject_MVC.Views.Customer
+namespace FlightProject_MVC.Views.CustomerViews
 {
     public class CustomersController : Controller
     {
@@ -17,6 +17,24 @@ namespace FlightProject_MVC.Views.Customer
         public CustomersController(FlightBookingDbContext context)
         {
             _context = context;
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Login(string name, string password)
+        {
+            var possibleUser = await _context.Customers.Where(s => s.Name == name).ToListAsync();
+            if(possibleUser.Single().Password != password)
+            {
+                throw new Exception("invalid username or password");
+            }
+            //TODO: VERIFY USER
+            return View("Login");
+        }
+
+        public IActionResult Login()
+        {
+            return View("Login");
         }
 
         // GET: Customers
