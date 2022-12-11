@@ -39,7 +39,6 @@
   <ItemGroup>
     <Folder Include="Views\Flight\" />
     <Folder Include="Views\Booking\" />
-    <Folder Include="Views\Customer\" />
   </ItemGroup>
 
 </Project>
