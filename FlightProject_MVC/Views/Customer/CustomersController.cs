@@ -10,85 +10,85 @@ using FlightProject_MVC.Models;
 
 namespace FlightProject_MVC.Views.Customer
 {
-    public class CustomerController : Controller
+    public class CustomersController : Controller
     {
         private readonly FlightBookingDbContext _context;
 
-        public CustomerController(FlightBookingDbContext context)
+        public CustomersController(FlightBookingDbContext context)
         {
             _context = context;
         }
 
-        // GET: Customer
+        // GET: Customers
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Flights.ToListAsync());
+              return View(await _context.Customers.ToListAsync());
         }
 
-        // GET: Customer/Details/5
+        // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Flights == null)
+            if (id == null || _context.Customers == null)
             {
                 return NotFound();
             }
 
-            var flight = await _context.Flights
+            var customer = await _context.Customers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (flight == null)
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(flight);
+            return View(customer);
         }
 
-        // GET: Customer/Create
+        // GET: Customers/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Customer/Create
+        // POST: Customers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FlightOrigin,FlightDestination,Capacity")] Flight flight)
+        public async Task<IActionResult> Create([Bind("Id,Name,Password")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(flight);
+                _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(flight);
+            return View(customer);
         }
 
-        // GET: Customer/Edit/5
+        // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Flights == null)
+            if (id == null || _context.Customers == null)
             {
                 return NotFound();
             }
 
-            var flight = await _context.Flights.FindAsync(id);
-            if (flight == null)
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer == null)
             {
                 return NotFound();
             }
-            return View(flight);
+            return View(customer);
         }
 
-        // POST: Customer/Edit/5
+        // POST: Customers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FlightOrigin,FlightDestination,Capacity")] Flight flight)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Password")] Customer customer)
         {
-            if (id != flight.Id)
+            if (id != customer.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace FlightProject_MVC.Views.Customer
             {
                 try
                 {
-                    _context.Update(flight);
+                    _context.Update(customer);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FlightExists(flight.Id))
+                    if (!CustomerExists(customer.Id))
                     {
                         return NotFound();
                     }
@@ -113,49 +113,49 @@ namespace FlightProject_MVC.Views.Customer
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(flight);
+            return View(customer);
         }
 
-        // GET: Customer/Delete/5
+        // GET: Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Flights == null)
+            if (id == null || _context.Customers == null)
             {
                 return NotFound();
             }
 
-            var flight = await _context.Flights
+            var customer = await _context.Customers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (flight == null)
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(flight);
+            return View(customer);
         }
 
-        // POST: Customer/Delete/5
+        // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Flights == null)
+            if (_context.Customers == null)
             {
-                return Problem("Entity set 'FlightBookingDbContext.Flights'  is null.");
+                return Problem("Entity set 'FlightBookingDbContext.Customers'  is null.");
             }
-            var flight = await _context.Flights.FindAsync(id);
-            if (flight != null)
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer != null)
             {
-                _context.Flights.Remove(flight);
+                _context.Customers.Remove(customer);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FlightExists(int id)
+        private bool CustomerExists(int id)
         {
-          return _context.Flights.Any(e => e.Id == id);
+          return _context.Customers.Any(e => e.Id == id);
         }
     }
 }
