@@ -10,9 +10,8 @@ namespace FlightProject_MVC.Data
         {
 
         }
-    }
     public DbSet<Flight> Flights { get; set; }
     public DbSet<Customer> Customers { get; set; }  
     public DbSet<Booking> Bookings { get; set; }
-
+    }
 }

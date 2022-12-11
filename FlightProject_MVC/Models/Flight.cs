@@ -9,6 +9,8 @@ namespace FlightProject_MVC.Models
         public string FlightOrigin { get; set; }    
         public string FlightDestination { get; set; }
         public int Capacity { get; set; }
+        public DateTime DepartureDate { get; set; }
+        public DateTime ArraivalDate { get; set; }
         public ICollection<Booking> Bookings { get; set;}
     }
 }
