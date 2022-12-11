@@ -11,6 +11,6 @@ namespace FlightProject_MVC.Models
         public int Capacity { get; set; }
         public DateTime DepartureDate { get; set; }
         public DateTime ArraivalDate { get; set; }
-        public ICollection<Booking> Bookings { get; set;}
+        public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     }
 }
