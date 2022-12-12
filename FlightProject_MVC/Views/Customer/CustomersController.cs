@@ -28,7 +28,7 @@ namespace FlightProject_MVC.Views.CustomerViews
             {
                 throw new Exception("invalid username or password");
             }
-            //TODO: VERIFY USER
+            HttpContext.Response.Headers["auth"] = "gay";
             return View("Login");
         }
 

@@ -27,6 +27,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.Use(async (context, next) =>
+{
+    //context.Request.Headers
+    global::System.Console.WriteLine("heyyy");
+    await next.Invoke();
+});
+
 
 app.UseAuthentication();
 app.UseAuthorization();
